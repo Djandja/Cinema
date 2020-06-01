@@ -1,9 +1,10 @@
-import React from 'react'
-import { Grid, List, GridColumn } from 'semantic-ui-react'
+import React, { SyntheticEvent } from 'react'
+import { Grid,  GridColumn } from 'semantic-ui-react'
 import { IActivity } from '../../../app/models/projection'
 import ActivityList from './ActivityList'
 import ActivityDetails from '../details/ActivityDetails'
 import ActivityForm from '../form/ActivityForm'
+
 
 interface IProps {
     projections: IActivity[]
@@ -12,6 +13,11 @@ interface IProps {
     editMode: boolean;
     setEditMode: (editMode: boolean) => void;
     setSelectedProjection: (projection: IActivity | null) => void;
+    createProjection: (projection: IActivity) => void;
+    editProjection: (projection: IActivity) =>void;
+    deleteProjection: (e: SyntheticEvent<HTMLButtonElement>,id: string) => void;
+    submitting: boolean
+    target:  string
 }
 
 const ActivityDashboard: React.FC<IProps> = ({
@@ -20,12 +26,23 @@ const ActivityDashboard: React.FC<IProps> = ({
     selectedProjection,
     editMode,
     setEditMode,
-    setSelectedProjection
+    setSelectedProjection,
+    createProjection,
+    editProjection,
+    deleteProjection,
+    submitting,
+    target
 }) => {
     return (
         <Grid>
             <Grid.Column width={10}>
-                <ActivityList projections={projections} selectProjection={selectProjection} />
+                <ActivityList 
+                projections={projections} 
+                selectProjection={selectProjection} 
+                deleteProjection={deleteProjection} 
+                submitting={submitting}
+                target={target}
+                />
             </Grid.Column>
             <GridColumn width={6}>
                 {selectedProjection && !editMode && ( 
@@ -35,8 +52,15 @@ const ActivityDashboard: React.FC<IProps> = ({
                 setSelectedProjection={setSelectedProjection}
                 />
                 )}
-                {editMode && 
-                <ActivityForm  setEditMode={setEditMode} projection={selectedProjection!}/>}
+                {editMode && (
+                <ActivityForm  
+                key={selectedProjection && selectedProjection.projectionID || 0}
+                setEditMode={setEditMode} projection={selectedProjection!}
+                createProjection= {createProjection} 
+                editProjection={editProjection}
+                submitting={submitting}
+                />
+                )}
             </GridColumn>
         </Grid>
     );

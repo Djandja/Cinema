@@ -1,7 +1,7 @@
 import React from 'react'
 import ActivityList from '../dashboard/ActivityList'
 import ActivityDashboard from '../dashboard/ActivityDashboard'
-import { Card, Image, Icon, Button } from 'semantic-ui-react'
+import { Card, Image, Button } from 'semantic-ui-react'
 import { IActivity } from '../../../app/models/projection'
 
 interface IProps {
