@@ -1,30 +1,28 @@
-import React, { SyntheticEvent } from 'react'
+import React, { useContext } from 'react'
 import { Item, Button, Label, Segment } from 'semantic-ui-react'
-import { IActivity } from '../../../app/models/projection'
+import { observer } from 'mobx-react-lite'
+import ProjectionStore from '../../../app/stores/projectionStore';
 
-interface IProps {
-    projections: IActivity[]
-    selectProjection: (id: string) => void;
-    deleteProjection: (event: SyntheticEvent<HTMLButtonElement>,id: string) => void;
-    submitting: boolean
-    target: string
-}
 
-const ActivityList: React.FC<IProps> = ({ 
-    projections, 
-    selectProjection, 
-    deleteProjection,
-    submitting,
-    target
-}) => {
+const ProjectionList: React.FC = () => {
+    const projectionStore = useContext(ProjectionStore);
+    const {
+        projectionsDTO: projections,
+        projectionByDate,
+        selectProjection, 
+        deleteProjection, 
+        submitting, 
+        target
+    }= projectionStore;
     return (
         <Segment clearing>
             <Item.Group divided>
-                {projections.map(projection => (
+                {/* {projectionByDate.map(projection => ( */}
+                {projections.map((projection) => (
                     <Item key={projection.projectionID}>
                         <Item.Content>
-                            <Item.Header as='a'>film id{projection.movieID}</Item.Header>
-                            <Item.Meta>Sala id{projection.hallID}</Item.Meta>
+                            <Item.Header as='a'>{projection.movie.title}</Item.Header>
+                            <Item.Meta>Ime sale{projection.hall.nameOfHall}</Item.Meta>
                             <Item.Description>
                                 <div> Vreme prikazivanja {projection.timeOfProjection} </div>
                                 <div> Datum prikazivanja {projection.dateOfProjection} </div>
@@ -38,7 +36,7 @@ const ActivityList: React.FC<IProps> = ({
                                  />
                                   <Button
                                   name={projection.projectionID}
-                                loading={target === projection.projectionID && submitting}
+                                loading={+target === projection.projectionID && submitting}
                                 onClick={(e) => deleteProjection(e, projection.projectionID)}
                                 floated='right' 
                                 content='Delete' 
@@ -58,4 +56,4 @@ const ActivityList: React.FC<IProps> = ({
     )
 }
 
-export default ActivityList
+export default observer (ProjectionList);

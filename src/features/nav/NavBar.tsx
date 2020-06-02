@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Menu, Segment, Button, Container } from 'semantic-ui-react'
+import ProjectionStore from '../../app/stores/projectionStore';
+import { observer } from 'mobx-react-lite'
 
-interface IProps {
-    openCreateForm: ()=> void;
-}
 
-const NavBar: React.FC<IProps> = ({openCreateForm}) => {
+
+const NavBar: React.FC = () => {
+    const projectionStore = useContext(ProjectionStore);
     return (
         <Menu fixed='top' inverted>
             <Container>
@@ -18,7 +19,7 @@ const NavBar: React.FC<IProps> = ({openCreateForm}) => {
                     name='Activities'
                 />
                 <Menu.Item>
-                    <Button onClick={openCreateForm} color='orange' content='Create Activity' />
+                    <Button onClick={projectionStore.openCreateForm} color='orange' content='Create Projection' />
                 </Menu.Item>
             </Container>
         </Menu>
@@ -26,4 +27,4 @@ const NavBar: React.FC<IProps> = ({openCreateForm}) => {
 
     )
 }
-export default NavBar
+export default observer (NavBar);
