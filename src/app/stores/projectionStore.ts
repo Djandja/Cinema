@@ -29,13 +29,10 @@ class ProjectionStore {
   //   this.loadingInitial = true;
   //   try {
   //     const projections = await agent.Projections.list();
-  //     runInAction('loading projections',() => {
   //       projections.forEach((projection) => {
-  //         projection.dateOfProjection = projection.dateOfProjection.split(
-  //           "."
-  //         )[0];
+  //         projection.dateOfProjection = projection.dateOfProjection.split(".")[0];
   //         this.projectionRegistry.set(projection.projectionID, projection);
-  //       });
+  //     
   //       this.loadingInitial = false;
   //     });
   //   } catch (error) {
@@ -81,6 +78,11 @@ class ProjectionStore {
               },
             })
           );
+          projections.forEach((projection) => {
+                projection.dateOfProjection = projection.dateOfProjection.split("T")[0];
+                projection.timeOfProjection = projection.timeOfProjection.split("T")[1];
+
+          })
 
           this.projectionsDTO = projections;
           console.log(this.projectionsDTO)

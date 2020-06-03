@@ -57,16 +57,16 @@ const CreateProjectionForm: React.FC = () => {
       <Form onSubmit={handleSubmit}>
         <Form.Input
           onChange={handleInputChange}
-          label="DateOfProjection"
+          label="Date Of Projection"
           type="date"
-          placeholder="datum"
+          placeholder="31.12.2020"
           name="dateOfProjection"
         />
         <Form.Input
           onChange={handleInputChange}
-          label="TimeOfProjection"
+          label="Time Of Projection"
           type="HH:mm:ss"
-          placeholder="vreme"
+          placeholder="20:00:00"
           name="timeOfProjection"
         />
         <Form.Field
@@ -74,7 +74,7 @@ const CreateProjectionForm: React.FC = () => {
           fluid
           control={Dropdown}
           selection
-          placeholder="Movie"
+          placeholder="Frozen 2"
           value={projection.movie}
           options={optionsMovie}
           onChange={handleChange}
@@ -84,7 +84,7 @@ const CreateProjectionForm: React.FC = () => {
           fluid
           control={Dropdown}
           selection
-          placeholder="Hall"
+          placeholder="Sala 1"
           value={projection.hall}
           options={optionsHall}
           onChange={handleChange}

@@ -9,11 +9,14 @@ const ProjectionDetails: React.FC = () => {
     const { selectedProjection: projection, openEditForm, cancelSelectedProjection } = projectionStore;
     return (
         <Card fluid>
-            <Image src={'/assets/categoryImages/placeholder.png'} wrapped ui={false} />
+            <Image src={'/assets/categoryImages/cinema.png'} wrapped ui={false} />
             <Card.Content>
-                <Card.Header>Film {projection!.movie.title}</Card.Header>
+                <Card.Header>Film {projection!.movie.title}
+                </Card.Header>
                 <Card.Meta>
                     <span >{projection!.dateOfProjection}</span>
+                </Card.Meta>
+                <Card.Meta>
                     <span >{projection!.timeOfProjection}</span>
                 </Card.Meta>
                 <Card.Meta>

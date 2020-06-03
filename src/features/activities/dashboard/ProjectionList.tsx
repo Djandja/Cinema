@@ -22,7 +22,7 @@ const ProjectionList: React.FC = () => {
                     <Item key={projection.projectionID}>
                         <Item.Content>
                             <Item.Header as='a'>{projection.movie.title}</Item.Header>
-                            <Item.Meta>Ime sale{projection.hall.nameOfHall}</Item.Meta>
+                            <Item.Meta>Sala: {projection.hall.nameOfHall}</Item.Meta>
                             <Item.Description>
                                 <div> Vreme prikazivanja {projection.timeOfProjection} </div>
                                 <div> Datum prikazivanja {projection.dateOfProjection} </div>

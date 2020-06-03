@@ -71,7 +71,7 @@ const EditProjectionForm: React.FC<IProps> = ({ projection: initialFormState }) 
       <Form.Input
           value = {projection.dateOfProjection}
           onChange={handleInputChange}
-          label="DateOfProjection"
+          label="Date Of Projection   (format YYYY-mm-dd)"
           type='date'
           placeholder="datum"
           name="dateOfProjection"
@@ -79,9 +79,9 @@ const EditProjectionForm: React.FC<IProps> = ({ projection: initialFormState }) 
         <Form.Input
         value = {projection.timeOfProjection}
         onChange={handleInputChange}
-          label="TimeOfProjection"
+          label="Time Of Projection"
           type='HH:mm:ss'
-          placeholder="vreme"
+          placeholder="20:00:00"
           name="timeOfProjection"
         />
         <Form.Field
