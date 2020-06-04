@@ -9,7 +9,6 @@ interface IProps {
 }
 
 const EditProjectionForm: React.FC<IProps> = ({ projection: initialFormState }) => {
-  const [projection, setProjection] = useState<IProjectionDTO>(initialFormState);
   const projectionStore = useContext(ProjectionStore);
   const {
     movieTitleRecord,
@@ -19,18 +18,13 @@ const EditProjectionForm: React.FC<IProps> = ({ projection: initialFormState }) 
     cancelEditFormOpen
   } = projectionStore;
 
+  const [projection, setProjection] = useState<IProjectionDTO>(initialFormState);
+
+
   const handleInputChange = (event: FormEvent<HTMLInputElement>) => {
     const { name, value } = event.currentTarget;
     setProjection({ ...projection, [name]: value });
   };
-
-  // const handleChange = (e: any, result: any) => {
-  //   const { name, value } = result;
-  //   setProjection({
-  //     ...projection,
-  //     [name]: value,
-  //   });
-  // };
 
   const handleChangeMovie = (e: any, result: any) => {
     const {value } = result;

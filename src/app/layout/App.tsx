@@ -5,6 +5,9 @@ import NavBar from '../../features/nav/NavBar';
 import LoadingComponent from './LoadingComponent';
 import ProjectionStore from '../stores/projectionStore';
 import { observer } from 'mobx-react-lite'
+import { Route } from 'react-router-dom';
+import HomePage from '../../features/home/HomePage';
+import CreateProjectionForm from '../../features/activities/form/CreateProjectionForm';
 
 const App = () => {
 
@@ -14,14 +17,21 @@ const App = () => {
     projectionStore.loadProjections();
   }, [projectionStore]);
 
-if(projectionStore.loadingInitial)return <LoadingComponent content='Ucitavanje projekcija...'/>
+  if (projectionStore.loadingInitial) return <LoadingComponent content='Ucitavanje projekcija...' />
 
   return (
     <Fragment>
-      <NavBar />
-      <Container style={{ marginTop: '7em' }}>
-        <ProjectionDashboard/>
-      </Container>
+      <Route exact path='/' component={HomePage} />
+      <Route path={'/(.+)'} render={() => (
+        <Fragment>
+          <NavBar />
+          <Container style={{ marginTop: '7em' }}>
+            <Route path='/projections' component={ProjectionDashboard} />
+            <Route path='/createProjection' component={CreateProjectionForm} />
+          </Container>
+        </Fragment>
+      )} />
+
     </Fragment>
   );
 

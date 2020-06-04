@@ -3,6 +3,7 @@ import { Segment, Form, Button, Dropdown } from "semantic-ui-react";
 import { observer } from "mobx-react-lite";
 import ProjectionStore from '../../../app/stores/projectionStore';
 import { IProjectionPostUpdate } from "../../../app/models/Projection/projectionPostUpdate";
+import { RouteComponentProps } from "react-router-dom";
 
 const CreateProjectionForm: React.FC = () => {
   const initializeForm = () => {
@@ -74,7 +75,7 @@ const CreateProjectionForm: React.FC = () => {
           fluid
           control={Dropdown}
           selection
-          placeholder="Frozen 2"
+          placeholder="Movie"
           value={projection.movie}
           options={optionsMovie}
           onChange={handleChange}
@@ -84,7 +85,7 @@ const CreateProjectionForm: React.FC = () => {
           fluid
           control={Dropdown}
           selection
-          placeholder="Sala 1"
+          placeholder="Hall"
           value={projection.hall}
           options={optionsHall}
           onChange={handleChange}
