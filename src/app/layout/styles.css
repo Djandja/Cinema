@@ -1,12 +1,72 @@
 body {
-  background-color: rgb(234,234,234) !important;
+  background-image: linear-gradient(
+    180deg,
+    rgb(67, 235, 226) 1%,
+    rgb(37, 233, 168) 4%,
+    rgb(20, 108, 180) 6%,
+    rgb(14, 68, 168) 9%,
+    rgb(18, 41, 99) 10%,
+    rgb(12, 4, 34) 12%,
+    rgb(5, 1, 1) 50%
+    /* rgb(100, 100, 100) 0%,
+    rgb(27, 27, 27) 69%,
+    rgb(19, 24, 24) 89%  */
+  ) !important;
 }
 
 .ui.inverted.top.fixed.menu {
   background-image: linear-gradient(
-    135deg,
-    rgb(100, 100, 100) 0%,
+    180deg,
+    rgb(20, 4, 4) 20%,
+    rgb(31, 6, 6) 35%,
+    rgb(48, 11, 11) 50%,
+    rgb(59, 7, 7) 55%,
+    rgb(107, 8, 8) 65%,
+    rgb(194, 11, 11) 79%,
+    rgb(204, 11, 11) 88%,
+    rgb(255, 0, 0) 98%
+    /* rgb(100, 100, 100) 0%,
     rgb(27, 27, 27) 69%,
-    rgb(19, 24, 24) 89%
+    rgb(19, 24, 24) 89%  */
   ) !important;
 }
+
+/*home page styles*/
+
+.masthead {
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(
+          90deg,
+          rgb(67, 235, 226) 1%,
+          rgb(37, 233, 168) 3%,
+          rgb(20, 108, 180) 8%,
+          rgb(14, 68, 168) 10%,
+          rgb(6, 25, 75) 14%,
+          rgb(12, 4, 34) 18%,
+          rgb(5, 1, 1) 50%,
+          rgb(44, 5, 5) 83%,
+          rgb(112, 8, 8) 86%,
+          rgb(194, 11, 11) 91%,
+          rgb(204, 11, 11) 95%,
+          rgb(255, 0, 0) 100%
+  ) !important;
+  height: 100vh;
+}
+
+.masthead .ui.menu .ui.button,
+.ui.menu a.ui.inverted.button {
+  margin-left: 0.5em;
+}
+
+.masthead h1.ui.header {
+  font-size: 4em;
+  font-weight: normal;
+}
+
+.masthead h2 {
+  font-size: 1.7em;
+  font-weight: normal;
+}
+
+/*end home page styles*/

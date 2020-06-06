@@ -12,17 +12,17 @@ const NavBar: React.FC = () => {
         <Menu fixed='top' inverted>
             <Container>
                 <Menu.Item header as={NavLink} exact to='/'>
-                    <img src="/assets/categoryImages/logo.png" alt="logo" style={{marginRight: 10}} />
-                        Reactivities
+                    <img src="/assets/logo.png" alt="logo" style={{marginRight: 10}} />
+                        Movies
                     </Menu.Item>
 
                 <Menu.Item
-                    name='Activities' as={NavLink} to='/projections'
+                    name='Projections' as={NavLink} to='/projections'
                 />
                 <Menu.Item>
                     <Button 
                     as={NavLink} to='/createProjection' 
-                    color='orange' content='Create Projection' />
+                    color='teal' content='Create Projection' />
                 </Menu.Item>
             </Container>
         </Menu>

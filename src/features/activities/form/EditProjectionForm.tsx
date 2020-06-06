@@ -4,6 +4,7 @@ import { observer } from "mobx-react-lite";
 import { IProjectionDTO } from "../../../app/models/Projection/projectionDto";
 import ProjectionStore from '../../../app/stores/projectionStore';
 
+
 interface IProps {
   projection: IProjectionDTO;
 }
@@ -59,6 +60,9 @@ const EditProjectionForm: React.FC<IProps> = ({ projection: initialFormState }) 
   const optionsHall = Array.from(
     hallNameRecord.entries()
   ).map(([key, value]) => ({ key, value: key, text: value }));
+
+
+
   return (
     <Segment clearing>
       <Form onSubmit={handleSubmit}>

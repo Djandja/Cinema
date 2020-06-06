@@ -20,10 +20,11 @@ class ProjectionStore {
   @observable target = "";
 
   @computed get projectionByDate() {
-    return Array.from(this.projectionRegistry.values()).sort(
+    return Array.from(this.projectionsDTO.values()).sort(
       (a, b) => Date.parse(a.dateOfProjection) - Date.parse(b.dateOfProjection)
     );
   }
+  
 
   // @action loadProjections = async () => {
   //   this.loadingInitial = true;
