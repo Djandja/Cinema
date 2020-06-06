@@ -24,6 +24,21 @@ class ProjectionStore {
       (a, b) => Date.parse(a.dateOfProjection) - Date.parse(b.dateOfProjection)
     );
   }
+
+  // @computed get projectionByDate() {
+  //   return this.groupProjectionsByDate(Array.from(this.projectionsDTO.values()));
+  // }
+
+  // groupProjectionsByDate(projections: IProjectionDTO[]) {
+  //   const sortedProjections = projections.sort(
+  //     (a,b) => Date.parse(a.dateOfProjection) - Date.parse(b.dateOfProjection)
+  //   )
+  //   return Object.entries(sortedProjections.reduce((projections,projection) => {
+  //     const date = projection.dateOfProjection.split('T')[0];
+  //     projections[date]= projections[date] ? [...projections[date], projection] : [projection];
+  //     return projections;
+  //   }, {} as {[key: string]: IProjectionDTO[]}));
+  // }
   
 
   // @action loadProjections = async () => {
