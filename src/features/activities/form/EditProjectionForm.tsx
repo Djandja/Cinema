@@ -130,45 +130,45 @@ const EditProjectionForm: React.FC<IProps> = ({ projection: initialFormState }) 
     <Segment clearing>
       <Form onSubmit={handleSubmit}>
         <FormField>
-        <Form.Input
-          value={projection.dateOfProjection}
-          onChange={handleInputChange}
-          label="Date Of Projection   (format YYYY-mm-dd)"
-          type='date'
-          placeholder="datum"
-          name="dateOfProjection"
-        />
-        {dateOfProjectionRequiredError && (
-                  <Label
-                    basic
-                    color="red"
-                    pointing
-                    content="Please choose date of projection"
-                    style={{ marginBottom: 10 }}
-                  />
-                )}
+          <Form.Input
+            value={projection.dateOfProjection}
+            onChange={handleInputChange}
+            label="Date Of Projection   (format YYYY-mm-dd)"
+            type='date'
+            placeholder="datum"
+            name="dateOfProjection"
+          />
+          {dateOfProjectionRequiredError && (
+            <Label
+              basic
+              color="red"
+              pointing
+              content="Please choose date of projection"
+              style={{ marginBottom: 10 }}
+            />
+          )}
         </FormField>
-        
+
         <FormField>
-        <Form.Input
-          value={projection.timeOfProjection}
-          onChange={handleInputChange}
-          label="Time Of Projection"
-          type='HH:mm:ss'
-          placeholder="20:00:00"
-          name="timeOfProjection"
-        />
-        {timeOfProjectioRequiredError && (
-                  <Label
-                    basic
-                    color="red"
-                    pointing
-                    content="Please choose time of projection"
-                    style={{ marginBottom: 10 }}
-                  />
-                )}
+          <Form.Input
+            value={projection.timeOfProjection}
+            onChange={handleInputChange}
+            label="Time Of Projection"
+            type='HH:mm:ss'
+            placeholder="20:00:00"
+            name="timeOfProjection"
+          />
+          {timeOfProjectioRequiredError && (
+            <Label
+              basic
+              color="red"
+              pointing
+              content="Please choose time of projection"
+              style={{ marginBottom: 10 }}
+            />
+          )}
         </FormField>
-        
+
         <Form.Field
           name="movie"
           fluid
@@ -182,14 +182,14 @@ const EditProjectionForm: React.FC<IProps> = ({ projection: initialFormState }) 
 
         />
         {movieRequiredError && (
-                <Label
-                  basic
-                  color="red"
-                  pointing
-                  content="Please choose movie"
-                  style={{ marginBottom: 10 }}
-                />
-              )}
+          <Label
+            basic
+            color="red"
+            pointing
+            content="Please choose movie"
+            style={{ marginBottom: 10 }}
+          />
+        )}
         <Form.Field
           name="hall"
           fluid
@@ -202,14 +202,14 @@ const EditProjectionForm: React.FC<IProps> = ({ projection: initialFormState }) 
           defaultValue={projection.hall.hallID}
         />
         {hallRequiredError && (
-                <Label
-                  basic
-                  color="red"
-                  pointing
-                  content="Please choose hall"
-                  style={{ marginBottom: 10 }}
-                />
-              )}
+          <Label
+            basic
+            color="red"
+            pointing
+            content="Please choose hall"
+            style={{ marginBottom: 10 }}
+          />
+        )}
 
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <Button
@@ -218,15 +218,15 @@ const EditProjectionForm: React.FC<IProps> = ({ projection: initialFormState }) 
             positive
             type="submit"
             content="Save"
-            // disabled={
-            //   uniqueError ||
-            //   errorTitle ||
-            //   movieRequiredError ||
-            //   hallRequiredError ||
-            //   dateOfProjectionRequiredError ||
-            //   timeOfProjectioRequiredError
+          // disabled={
+          //   uniqueError ||
+          //   errorTitle ||
+          //   movieRequiredError ||
+          //   hallRequiredError ||
+          //   dateOfProjectionRequiredError ||
+          //   timeOfProjectioRequiredError
 
-            // }
+          // }
           />
           <Button
             style={{ width: "50%" }}

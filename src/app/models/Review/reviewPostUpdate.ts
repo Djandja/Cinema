@@ -1,5 +1,4 @@
-export interface IReview {
-    reviewID: number;
+export interface IReviewPostUpdate {
     description: string;
     actors: string;
     yearOfPublication: string;

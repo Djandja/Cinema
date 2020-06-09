@@ -55,7 +55,7 @@ const ProjectionDetailedHeader: React.FC<{ projection: IProjectionDTO }> = ({ pr
         <Button 
         onClick={() => openEditForm(projection!.projectionID)}
         color='blue' floated='right'>
-          Edit Movie
+          Edit Projection
                 </Button>
       </Segment>
     </Segment.Group>

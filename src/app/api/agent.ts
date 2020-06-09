@@ -4,6 +4,12 @@ import allSettled from "promise.allsettled";
 import { IMovie } from "../models/Movie/movie";
 import { IHall } from "../models/Hall/hall";
 import { IProjectionPostUpdate } from "../models/Projection/projectionPostUpdate";
+import { IGenre } from "../models/Genre/gnre";
+import { IReview } from "../models/Review/review";
+import { IUser } from "../models/User/user";
+import { IMoviePostUpdate } from "../models/Movie/moviePostUpdate";
+import { IUserPostUpdate } from "../models/User/userPostUpdate";
+import { IReviewPostUpdate } from "../models/Review/reviewPostUpdate";
 
 axios.defaults.baseURL = "http://localhost:8081/api";
 
@@ -42,6 +48,57 @@ const Projections = {
   delete: (id: number) => requests.delete(`/projections/${id}`),
 };
 
+const Movies = {
+  list: () => //requests.get('/projections'),
+  {
+    const moviePath = "http://localhost:8081/api/movies";
+    const genrePath = "http://localhost:8081/api/genres";
+    const reviewPath = "http://localhost:8081/api/reviews";
+
+    return allSettled([
+      axios.get<IMovie[]>(moviePath),
+      axios.get<IGenre[]>(genrePath),
+      axios.get<IReview[]>(reviewPath),
+    ]);
+  },
+  details: (id: number) => requests.get(`/movies/${id}`),
+  create: (movie: IMoviePostUpdate) => requests.post("/movies", movie),
+  update: (movie: IMovie) =>
+    requests.put(`/movies/${movie.movieID}`, {
+      title: movie.title,
+      director: movie.director,
+      synchronization: movie.synchronization,
+      ratings: movie.ratings,
+      minutes: movie.minutes,
+      genreID: movie.genreID,
+      reviewID : movie.reviewID
+    }),
+  delete: (id: number) => requests.delete(`/movies/${id}`),
+};
+
+const Reviews = {
+  list: () => //requests.get('/projections'),
+  {
+    const reviewPath = "http://localhost:8081/api/reviews";
+
+    return allSettled([
+      axios.get<IReview[]>(reviewPath)
+    ]);
+  },
+  details: (id: number) => requests.get(`/reviews/${id}`),
+  create: (review: IReviewPostUpdate) => requests.post("/reviews", review),
+  update: (review: IReview) =>
+    requests.put(`/reviews/${review.reviewID}`, {
+      description: review.description,
+      actors: review.actors,
+      yearOfPublication: review.yearOfPublication,
+    }),
+  delete: (id: number) => requests.delete(`/reviews/${id}`),
+};
+
+
 export default {
   Projections,
+  Movies,
+  Reviews
 };

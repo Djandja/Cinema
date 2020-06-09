@@ -12,6 +12,12 @@ class ProjectionStore {
   @observable projectionsDTO: IProjectionDTO[] = [];
   @observable loadingInitial = false;
   @observable movieTitleRecord = new Map<number, string>();
+
+  @observable movieDirectorRecord = new Map<number, string>();
+  @observable movieRatingsRecord = new Map<number, string>();
+  @observable movieMinutesRecord = new Map<number, string>();
+  @observable movieSynchronizationRecord = new Map<number, boolean>();
+  
   @observable hallNameRecord = new Map<number, string>();
   @observable selectedProjection: IProjectionDTO | undefined;  
   @observable editMode = false;
@@ -72,6 +78,35 @@ class ProjectionStore {
             moviesResult.value.data.map(({ movieID, title }) => [
               movieID,
               title,
+              
+            ])
+          );
+          this.movieDirectorRecord = new Map(
+            moviesResult.value.data.map(({ movieID, director }) => [
+              movieID,
+              director,
+              
+            ])
+          );
+          this.movieRatingsRecord = new Map(
+            moviesResult.value.data.map(({ movieID, ratings }) => [
+              movieID,
+              ratings,
+              
+            ])
+          );
+          this.movieMinutesRecord = new Map(
+            moviesResult.value.data.map(({ movieID, minutes }) => [
+              movieID,
+              minutes,
+              
+            ])
+          );
+          this.movieSynchronizationRecord = new Map(
+            moviesResult.value.data.map(({ movieID, synchronization }) => [
+              movieID,
+              synchronization,
+              
             ])
           );
           this.hallNameRecord = new Map(
@@ -87,6 +122,10 @@ class ProjectionStore {
               movie: {
                 movieID: movieID,
                 title: this.movieTitleRecord.get(movieID as number)!,
+                director: this.movieDirectorRecord.get(movieID as number)!,
+                ratings: this.movieRatingsRecord.get(movieID as number)!,
+                minutes: this.movieMinutesRecord.get(movieID as number)!,
+                synchronization: this.movieSynchronizationRecord.get(movieID as number)!,
               },
               hall: {
                 hallID: hallID,

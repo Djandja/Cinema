@@ -11,12 +11,12 @@ export interface IProjectionDTO {
   export type Movie = {
     movieID: number,
     title?: string,
-    // director: string,
-    // synchronization: boolean,
-    // ratings: string,
-    // minutes:string,
-    // reviewID: number,
-    // genreID: number
+    director?: string,
+    synchronization?: boolean,
+    ratings?: string,
+    minutes?:string,
+    reviewID?: number,
+    genreID?: number
   };
   export type Hall = {
     hallID: number;

@@ -20,8 +20,8 @@ import { IProjectionDTO } from '../../../app/models/Projection/projectionDto'
                   <Grid.Column width={1}>
                     <Icon name='pencil' size='large' color='teal' />
                   </Grid.Column>
-                  <Grid.Column width={5}>
-                    <span>{'Reditelj'}</span>
+                  <Grid.Column width={10}>
+                    <span>Directed by: {projection.movie.director}</span>
                   </Grid.Column>
                 </Grid>
               </Segment>
@@ -31,7 +31,7 @@ import { IProjectionDTO } from '../../../app/models/Projection/projectionDto'
                     <Icon name='star' size='large' color='teal' />
                   </Grid.Column>
                   <Grid.Column width={5}>
-                    <span>{'Ocena'}</span>
+                    <span>{projection.movie.ratings}</span>
                   </Grid.Column>
                 </Grid>
               </Segment>
@@ -41,7 +41,7 @@ import { IProjectionDTO } from '../../../app/models/Projection/projectionDto'
                     <Icon name='unmute' size='large' color='teal' />
                   </Grid.Column>
                   <Grid.Column width={11}>
-                    <span>{'Sinhronizacija'}</span>
+                    <span>Synchronization: {String(projection.movie.synchronization)!}</span>
                   </Grid.Column>
                 </Grid>
               </Segment>
@@ -51,7 +51,7 @@ import { IProjectionDTO } from '../../../app/models/Projection/projectionDto'
                     <Icon name='time' size='large' color='teal' />
                   </Grid.Column>
                   <Grid.Column width={11}>
-                    <span>{'Trajanje minutaza'}</span>
+                    <span>{projection.movie.minutes}</span>
                   </Grid.Column>
                 </Grid>
               </Segment>

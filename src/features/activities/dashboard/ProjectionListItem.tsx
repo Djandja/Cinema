@@ -25,17 +25,6 @@ const ProjectionListItem: React.FC<{ projection: IProjectionDTO }> = ({ projecti
                                 {/* <div> Vreme prikazivanja {projection.timeOfProjection} </div>
                             <div> Datum prikazivanja {projection.dateOfProjection} </div> */}
                             </Item.Description>
-                            <Item.Extra>
-
-                                {/* <Button
-                  name={projection.projectionID}
-                loading={+target === projection.projectionID && submitting}
-                onClick={(e) => deleteProjection(e, projection.projectionID)}
-                floated='right' 
-                content='Delete' 
-                color='red'
-                 /> */}
-                            </Item.Extra>
                         </Item.Content>
                     </Item>
                 </Item.Group>
@@ -56,6 +45,14 @@ const ProjectionListItem: React.FC<{ projection: IProjectionDTO }> = ({ projecti
                     content='View'
                     color='blue'
                 />
+                <Button
+                  name={projection.projectionID}
+                loading={+target === projection.projectionID && submitting}
+                onClick={(e) => deleteProjection(e, projection.projectionID)}
+                floated='right' 
+                content='Delete' 
+                color='red'
+                 />
             </Segment>
         </Segment.Group>
 

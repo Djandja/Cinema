@@ -1,10 +1,9 @@
-export interface IMovie{
-    movieID: number,
+export interface IMoviePostUpdate {
     title: string,
     director: string,
     synchronization: boolean,
     ratings: string,
     minutes:string,
-    genreID: number,
     reviewID: number,
+    genreID: number
 }

@@ -1,31 +1,30 @@
 import React, { useContext, useState, Fragment } from 'react'
 import { Item, Button, Label, Segment, Search } from 'semantic-ui-react'
 import { observer } from 'mobx-react-lite'
-import ProjectionStore from '../../../app/stores/projectionStore';
-import ProjectionListItem from './ProjectionListItem';
 import _ from "lodash";
-import { IProjectionDTO } from '../../../app/models/Projection/projectionDto';
+import ReviewStore from '../../../app/stores/reviewStore';
+import {IReviewDTO} from '../../../app/models/Review/reviewDto';
+import ReviewListItem from './ReviewListItem';
 
-
-const ProjectionList: React.FC = () => {
-    const projectionStore = useContext(ProjectionStore);
+const ReviewList: React.FC = () => {
+    const reviewStore = useContext(ReviewStore);
     const {
-        projectionsDTO: projections,
-        projectionByDate,
-        selectProjection,
-        deleteProjection,
+        reviewsDTO: reviews,
+        //review,
+        selectReview,
+        deleteReview,
         submitting,
         target
-    } = projectionStore;
+    } = reviewStore;
 
     const [offset, setOffset] = useState(0);
     const [perPage, setPerPage] = useState(4);
     const [currentPage, setCurrentPage] = useState(0);
-    const [pageCount, setPageCount] = useState(Math.ceil(projections.length / perPage));
+    const [pageCount, setPageCount] = useState(Math.ceil(reviews.length / perPage));
 
     const [isLoading, setIsLoading] = useState(false);
     const [value, setValue] = useState("");
-    const [results, setResults] = useState<IProjectionDTO[]>(projectionByDate);
+    const [results, setResults] = useState<IReviewDTO[]>(reviews);
 
     
 
@@ -38,14 +37,14 @@ const ProjectionList: React.FC = () => {
                 setIsLoading(false);
                 setValue("");
 
-                setResults(projectionByDate);
+                setResults(reviews);
             }
 
             const re = new RegExp(_.escapeRegExp(value), "i");
-            const isMatch = (result: any) => re.test(result.movie.title);
+            const isMatch = (result: any) => re.test(result.review.title);
 
             setIsLoading(false);
-            setResults(_.filter(projectionByDate, isMatch));
+            setResults(_.filter(reviews, isMatch));
         }, 300);
     };
     return (
@@ -62,13 +61,13 @@ const ProjectionList: React.FC = () => {
             // {...this.props}
             />
             <Item.Group divided>
-                {/* {projectionByDate.map(projection => ( */}
-                {results.map((projection) => (
-                    <ProjectionListItem key={projection.projectionID} projection={projection} />
+                {/* {reviewByDate.map(review => ( */}
+                {results.map((review) => (
+                    <ReviewListItem key={review.reviewID} review={review} />
                 ))}
             </Item.Group>
         </Fragment>
     )
 }
 
-export default observer(ProjectionList);
+export default observer(ReviewList);
