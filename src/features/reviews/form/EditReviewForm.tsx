@@ -9,7 +9,7 @@ interface IProps {
 
 const EditReviewForm: React.FC<IProps> = ({ review: initialFormState }) => {
     const reviewStore = useContext(ReviewStore);
-    const { editReview, submitting, reviewsDTO } = reviewStore;
+    const { editReview, submitting, reviewsDTO,cancelEditFormOpen } = reviewStore;
 
     const [review, setReview] = useState<IReviewDTO>(initialFormState);
     const [errorReviewDescription, setErrorReviewDescription] = useState(false);
@@ -143,6 +143,7 @@ const EditReviewForm: React.FC<IProps> = ({ review: initialFormState }) => {
                     <Form.Input
                         onChange={handleInputChange}
                         label="Publication"
+                        type='date'
                         placeholder="2012"
                         name="yearOfPublication"
                         value={review.yearOfPublication}
@@ -157,12 +158,12 @@ const EditReviewForm: React.FC<IProps> = ({ review: initialFormState }) => {
                         type="submit"
                         content="Save"
                     />
-                    {/*     <Button
-            onClick={() => cancelCreateFormOpen()}
-            style={{ width: "50%" }}
-            type="button"
-            content="Cancel"
-          /> */}
+                    <Button
+                        onClick={() => cancelEditFormOpen()}
+                        style={{ width: "50%" }}
+                        type="button"
+                        content="Cancel"
+                    />
                 </div>
             </Form>
         </Segment>

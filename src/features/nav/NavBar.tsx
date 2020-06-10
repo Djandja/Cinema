@@ -26,6 +26,9 @@ const NavBar: React.FC = () => {
                     <Menu.Item
                         name='Reviews' as={NavLink} to='/reviews'
                     />
+                     <Menu.Item
+                        name='Reservations' as={NavLink} to='/reservations'
+                    />
                     {/* <Menu.Item>
                         <Button
                             as={NavLink} to='/createProjection'
@@ -51,6 +54,11 @@ const NavBar: React.FC = () => {
                                 <Button
                                     as={NavLink} to='/createReview'
                                     color='teal' content='Create Review' />
+                                </Dropdown.Item>
+                                <Dropdown.Item>
+                                <Button
+                                    as={NavLink} to='/createReservation'
+                                    color='teal' content='Create Reservation' />
                                 </Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>

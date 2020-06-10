@@ -18,7 +18,7 @@ const ReviewListItem: React.FC<{ review: IReviewDTO }> = ({ review }) => {
             <Segment>
                 <Item.Group>
                     <Item >
-                        <Item.Image size='tiny' circular src='/assets/reviewShow.png' />
+                        <Item.Image size='small' src='/assets/reviewTime.png' />
                         <Item.Content>
                             <Item.Header as='a'>{review.actors}</Item.Header>
                             <Item.Meta>Year of publication: {review.yearOfPublication}</Item.Meta>

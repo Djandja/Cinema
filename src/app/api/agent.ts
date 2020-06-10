@@ -10,11 +10,12 @@ import { IUser } from "../models/User/user";
 import { IMoviePostUpdate } from "../models/Movie/moviePostUpdate";
 import { IUserPostUpdate } from "../models/User/userPostUpdate";
 import { IReviewPostUpdate } from "../models/Review/reviewPostUpdate";
+import { IReservation } from "../models/Reservation/reservation";
+import { IReservationPostUpdate } from "../models/Reservation/reservationPostUpdate";
 
 axios.defaults.baseURL = "http://localhost:8081/api";
 
 const responseBody = (response: AxiosResponse) => response.data;
-
 
 const requests = {
   get: (url: string) => axios.get(url).then(responseBody),
@@ -24,20 +25,22 @@ const requests = {
 };
 
 const Projections = {
-  list: () => //requests.get('/projections'),
-  {
-    const projectionPath = "http://localhost:8081/api/projections";
-    const moviePath = "http://localhost:8081/api/movies";
-    const hallPath = "http://localhost:8081/api/halls";
+  list: () =>
+    //requests.get('/projections'),
+    {
+      const projectionPath = "http://localhost:8081/api/projections";
+      const moviePath = "http://localhost:8081/api/movies";
+      const hallPath = "http://localhost:8081/api/halls";
 
-    return allSettled([
-      axios.get<IProjection[]>(projectionPath),
-      axios.get<IMovie[]>(moviePath),
-      axios.get<IHall[]>(hallPath),
-    ]);
-  },
+      return allSettled([
+        axios.get<IProjection[]>(projectionPath),
+        axios.get<IMovie[]>(moviePath),
+        axios.get<IHall[]>(hallPath),
+      ]);
+    },
   details: (id: number) => requests.get(`/projections/${id}`),
-  create: (projection: IProjectionPostUpdate) => requests.post("/projections", projection),
+  create: (projection: IProjectionPostUpdate) =>
+    requests.post("/projections", projection),
   update: (projection: IProjection) =>
     requests.put(`/projections/${projection.projectionID}`, {
       timeOfProjection: projection.timeOfProjection,
@@ -49,18 +52,19 @@ const Projections = {
 };
 
 const Movies = {
-  list: () => //requests.get('/projections'),
-  {
-    const moviePath = "http://localhost:8081/api/movies";
-    const genrePath = "http://localhost:8081/api/genres";
-    const reviewPath = "http://localhost:8081/api/reviews";
+  list: () =>
+    //requests.get('/projections'),
+    {
+      const moviePath = "http://localhost:8081/api/movies";
+      const genrePath = "http://localhost:8081/api/genres";
+      const reviewPath = "http://localhost:8081/api/reviews";
 
-    return allSettled([
-      axios.get<IMovie[]>(moviePath),
-      axios.get<IGenre[]>(genrePath),
-      axios.get<IReview[]>(reviewPath),
-    ]);
-  },
+      return allSettled([
+        axios.get<IMovie[]>(moviePath),
+        axios.get<IGenre[]>(genrePath),
+        axios.get<IReview[]>(reviewPath),
+      ]);
+    },
   details: (id: number) => requests.get(`/movies/${id}`),
   create: (movie: IMoviePostUpdate) => requests.post("/movies", movie),
   update: (movie: IMovie) =>
@@ -71,20 +75,47 @@ const Movies = {
       ratings: movie.ratings,
       minutes: movie.minutes,
       genreID: movie.genreID,
-      reviewID : movie.reviewID
+      reviewID: movie.reviewID,
     }),
   delete: (id: number) => requests.delete(`/movies/${id}`),
 };
 
-const Reviews = {
-  list: () => //requests.get('/projections'),
-  {
-    const reviewPath = "http://localhost:8081/api/reviews";
+const Reservations = {
+  list: () => {
+    const reservationPath = "http://localhost:8081/api/reservations";
+    const projectionPath = "http://localhost:8081/api/projections";
+    const userPath = "http://localhost:8081/api/users";
 
     return allSettled([
-      axios.get<IReview[]>(reviewPath)
+      axios.get<IReservation[]>(reservationPath),
+      axios.get<IProjection[]>(projectionPath),
+      axios.get<IUser[]>(userPath),
     ]);
   },
+  details: (id: number) => requests.get(`/reservations/${id}`),
+  create: (reservation: IReservationPostUpdate) =>
+    requests.post("/reservations", reservation),
+  update: (reservation: IReservation) =>
+    requests.put(`/reservations/${reservation.reservationID}`, {
+      startDate: reservation.startDate,
+      exparationDateTime: reservation.exparationDateTime,
+      seatNo: reservation.seatNo,
+      rowNo: reservation.rowNo,
+      projectionID: reservation.projectionID,
+      userID: reservation.userID,
+    }),
+  delete: (id: number) => requests.delete(`/reservations/${id}`),
+};
+
+const Reviews = {
+  list: () =>
+    //requests.get('/projections'),
+    {
+      const reviewPath = "http://localhost:8081/api/reviews";
+
+      const reviews: Promise<IReview[]> = requests.get(reviewPath);
+      return reviews;
+    },
   details: (id: number) => requests.get(`/reviews/${id}`),
   create: (review: IReviewPostUpdate) => requests.post("/reviews", review),
   update: (review: IReview) =>
@@ -96,9 +127,9 @@ const Reviews = {
   delete: (id: number) => requests.delete(`/reviews/${id}`),
 };
 
-
 export default {
   Projections,
   Movies,
-  Reviews
+  Reviews,
+  Reservations,
 };

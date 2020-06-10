@@ -37,7 +37,7 @@ const CreateReviewForm: React.FC = () => {
             setReviewActorsRequiredError(true);
         }
 
-        const formValid = !uniqueError && reviewDescriptionValid && reviewActorsValid;
+        const formValid = reviewDescriptionValid && reviewActorsValid;
 
         if (formValid) {
             let newReview: IReviewPostUpdate = {
@@ -46,6 +46,8 @@ const CreateReviewForm: React.FC = () => {
                 yearOfPublication: review.yearOfPublication
             };
             createReview(newReview);
+        } else {
+
         }
     };
 
@@ -69,7 +71,7 @@ const CreateReviewForm: React.FC = () => {
                 setErrorReviewDescription(false);
             }
 
-            handleUniqueError(value);
+            // handleUniqueError(value);
 
             if (value === "") {
                 setReviewDescriptionRequiredError(true);
@@ -124,7 +126,7 @@ const CreateReviewForm: React.FC = () => {
                                     />
                                 )}
 
-                                {uniqueError && (
+                                {/* {uniqueError && (
                                     <Label
                                         basic
                                         color="red"
@@ -132,7 +134,7 @@ const CreateReviewForm: React.FC = () => {
                                         content="This description already exists"
                                         style={{ marginBottom: 10 }}
                                     />
-                                )}
+                                )} */}
                             </FormField>
                             <FormField>
                                 <Form.Input
@@ -155,6 +157,7 @@ const CreateReviewForm: React.FC = () => {
                                 <Form.Input
                                     onChange={handleInputChange}
                                     label="Publication"
+                                    type='date'
                                     placeholder="2012"
                                     name="yearOfPublication"
                                 />

@@ -24,21 +24,27 @@ const ReviewDetailedHeader: React.FC<{ review: IReviewDTO }> = ({ review }) => {
     return (
         <Segment.Group>
             <Segment basic attached='top' style={{ padding: '0' }}>
-                <Image src={'/assets/reviewTime.png'} fluid />
+                <Image src={'/assets/review.png'} fluid />
                 <Segment basic style={activityImageTextStyle}>
                     <Item.Group>
                         <Item>
                             <Item.Content>
-                                <Item.Header as='a'>{review.reviewID}</Item.Header>
-                                <Item.Meta>glumci{review.actors}</Item.Meta>
-                                <Item.Meta>{review.yearOfPublication}</Item.Meta>
-                                <Item.Description>
-                                    <div> Description {review.description} </div>
-                                </Item.Description>
+                                <Header
+                                    size='huge'
+                                    content={review.reviewID}
+                                    style={{ color: 'gold' }}
+                                />
+                                <p> Actors: {review.actors}</p>
+                                <p> Publiced: {review.yearOfPublication}</p>
                             </Item.Content>
                         </Item>
                     </Item.Group>
                 </Segment>
+            </Segment>
+            <Segment>
+                <Item.Description>
+                    <div> Description {review.description} </div>
+                </Item.Description>
             </Segment>
             <Segment clearing attached='bottom'>
                 <Button onClick={cancelSelectedReview}>

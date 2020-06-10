@@ -24,9 +24,15 @@ class ReviewStore {
         const reviews = reviewResult.map(({ ...selectedReview }) => ({
           ...selectedReview,
         }));
+
+        reviews.forEach((review) => {
+          review.yearOfPublication = review.yearOfPublication.split("T")[0];
+    })
+
         console.log(reviews);
-        //this.reviewsDTO= reviews;
+        this.reviewsDTO= reviews;
       })
+      
       .catch((err) => console.log(err))
       .finally(() => (this.loadingInitial = false));
   };

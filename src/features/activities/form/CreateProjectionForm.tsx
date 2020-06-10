@@ -156,7 +156,7 @@ const CreateProjectionForm: React.FC = () => {
                   onChange={handleInputChange}
                   label="Date Of Projection"
                   type="date"
-                  placeholder="31.12.2020"
+                  placeholder="31.12.2020."
                   name="dateOfProjection"
                 />
                 {dateOfProjectionRequiredError && (
