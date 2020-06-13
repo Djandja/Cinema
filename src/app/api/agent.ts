@@ -127,9 +127,32 @@ const Reviews = {
   delete: (id: number) => requests.delete(`/reviews/${id}`),
 };
 
+const Users = {
+  list: () =>
+    {
+      const urerPath = "http://localhost:8081/api/users";
+
+      const users: Promise<IUser[]> = requests.get(urerPath);
+      return users;
+    },
+  details: (id: number) => requests.get(`/users/${id}`),
+  create: (user: IUserPostUpdate) => requests.post("/users", user),
+  update: (user: IUser) =>
+    requests.put(`/users/${user.userID}`, {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      sex:user.sex,
+      noTelephone: user.noTelephone,
+      email: user.email,
+      password: user.password
+    }),
+  delete: (id: number) => requests.delete(`/users/${id}`),
+};
+
 export default {
   Projections,
   Movies,
   Reviews,
   Reservations,
+  Users
 };

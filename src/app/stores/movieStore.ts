@@ -74,11 +74,11 @@ class MovieStore {
               },
             })
           );
-          // movies.forEach((movie) => {
-          //   movie.review.yearOfPublication = movie.review.yearOfPublication.split(
-          //     "."
-          //   )[2];
-          // })
+          movies.forEach((movie) => {
+            movie.review.yearOfPublication = movie.review.yearOfPublication.split(
+              "T"
+            )[0];
+          })
 
           this.moviesDTO= movies; 
           console.log(this.moviesDTO);

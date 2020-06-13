@@ -21,10 +21,6 @@ const ProjectionListItem: React.FC<{ projection: IProjectionDTO }> = ({ projecti
                         <Item.Content>
                             <Item.Header as='a'>{projection.movie.title}</Item.Header>
                             <Item.Meta>Sala: {projection.hall.nameOfHall}</Item.Meta>
-                            <Item.Description>
-                                {/* <div> Vreme prikazivanja {projection.timeOfProjection} </div>
-                            <div> Datum prikazivanja {projection.dateOfProjection} </div> */}
-                            </Item.Description>
                         </Item.Content>
                     </Item>
                 </Item.Group>
@@ -32,13 +28,12 @@ const ProjectionListItem: React.FC<{ projection: IProjectionDTO }> = ({ projecti
             </Segment>
             <Segment>
                 <Icon name='calendar' /> {projection.dateOfProjection}
+            </Segment>
+            <Segment>
                 <Icon name='clock' /> {projection.timeOfProjection}
             </Segment>
-            <Segment secondary>
-                nesto ide ovde
-            </Segment>
             <Segment clearing>
-                <span> opis</span>
+            <Icon name='unmute' />Synchronization: {+(projection.movie.synchronization)!}
                 <Button
                     onClick={() => selectProjection(projection.projectionID)}
                     floated='right'

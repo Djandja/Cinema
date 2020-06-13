@@ -17,6 +17,9 @@ import ReviewDashboard from '../../features/reviews/dashboard/ReviewDashboard';
 import CreateReviewForm from '../../features/reviews/form/CreateReviewForm';
 import ReservationDashboard from '../../features/reservations/dashboard/ReservationDashboard';
 import CreateReservationForm from '../../features/reservations/form/CreateReservationForm';
+import UserStore from '../stores/userStore';
+import UserDashboard from '../../features/users/dashboard/UserDashboard';
+import CreateUserForm from '../../features/users/form/CreateUserForm';
 
 const App = () => {
 
@@ -24,18 +27,21 @@ const App = () => {
   const movieStore = useContext(MovieStore);
   const reviewStore = useContext(ReviewStore);
   const reservationStore = useContext(ReservationStore);
+  const userStore = useContext(UserStore);
 
   useEffect(() => {
     projectionStore.loadProjections();
     movieStore.loadMovies();
     reviewStore.loadReviews();
     reservationStore.loadReservations();
-  }, [projectionStore, movieStore,reviewStore, reservationStore ]);
+    userStore.loadUsers();
+  }, [projectionStore, movieStore,reviewStore, reservationStore, userStore ]);
 
   if (projectionStore.loadingInitial) return <LoadingComponent content='Loading projections...' />
   if (movieStore.loadingInitial) return <LoadingComponent content='Loading movies...' />
    if (reviewStore.loadingInitial) return <LoadingComponent content='Loading reviews...' />
    if (reservationStore.loadingInitial) return <LoadingComponent content='Loading reservations...' />
+   if (userStore.loadingInitial) return <LoadingComponent content='Loading users...' />
 
   return (
     <Fragment>
@@ -48,10 +54,12 @@ const App = () => {
             <Route path='/movies' component={MovieDashboard} />
             <Route path='/reviews' component={ReviewDashboard} />
             <Route path='/reservations' component={ReservationDashboard} />
+            <Route path='/users' component={UserDashboard} />
             <Route path='/createProjection' component={CreateProjectionForm} />
             <Route path='/createMovie' component={CreateMovieForm} />
             <Route path='/createReview' component={CreateReviewForm} />
             <Route path='/createReservation' component={CreateReservationForm} />
+            <Route path='/createUser' component={CreateUserForm} />
           </Container>
         </Fragment>
       )} />

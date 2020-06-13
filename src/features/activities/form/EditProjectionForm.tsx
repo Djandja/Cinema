@@ -133,7 +133,7 @@ const EditProjectionForm: React.FC<IProps> = ({ projection: initialFormState }) 
           <Form.Input
             value={projection.dateOfProjection}
             onChange={handleInputChange}
-            label="Date Of Projection   (format YYYY-mm-dd)"
+            label="Date Of Projection"
             type='date'
             placeholder="datum"
             name="dateOfProjection"
@@ -172,6 +172,7 @@ const EditProjectionForm: React.FC<IProps> = ({ projection: initialFormState }) 
         <Form.Field
           name="movie"
           fluid
+          label="Movie"
           control={Dropdown}
           selection
           placeholder="Movie"
@@ -193,6 +194,7 @@ const EditProjectionForm: React.FC<IProps> = ({ projection: initialFormState }) 
         <Form.Field
           name="hall"
           fluid
+          label="Hall"
           control={Dropdown}
           selection
           placeholder="Hall"

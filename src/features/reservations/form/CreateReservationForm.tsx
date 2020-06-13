@@ -251,7 +251,6 @@ const CreateReservationForm: React.FC = () => {
                                     />
                                 )}
                             </FormField>
-
                             <Form.Field
                                 name="projection"
                                 fluid
@@ -272,7 +271,6 @@ const CreateReservationForm: React.FC = () => {
                                     style={{ marginBottom: 10 }}
                                 />
                             )}
-
                             <Form.Field
                                 name="user"
                                 fluid
@@ -321,11 +319,11 @@ const CreateReservationForm: React.FC = () => {
                         </Form>
                     </Segment>
                 </Grid.Column>
-                <GridColumn>
+                <Grid.Column width={5}>
                     <Image src={'/assets/reservation.png'}
-                        style={{ flex: 3, height: 150, width: 150 }}
+                        style={{ flex: 3, height: 350, width: 350 }}
                         fluid />
-                </GridColumn>
+                </Grid.Column>
             </Grid>
         </Segment>
 

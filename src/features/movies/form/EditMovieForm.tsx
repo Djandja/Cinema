@@ -47,7 +47,6 @@ const EditMovieForm: React.FC<IProps> = ({ movie: initialFormState }) => {
         }
         const titleValid = movie.title !== "";
         if (!titleValid) {
-            console.log("title invalid");
             setTitleRequiredError(true);
         }
         const directorValid = +movie.director !== 0;
@@ -68,10 +67,10 @@ const EditMovieForm: React.FC<IProps> = ({ movie: initialFormState }) => {
         }
 
         const formValid = !uniqueError && genreValid && reviewValid && titleValid && directorValid &&
-         ratingsValid && minutesValid
+            ratingsValid && minutesValid
 
         if (formValid) {
-            editMovie ({
+            editMovie({
                 movieID: movie.movieID,
                 title: movie.title,
                 director: movie.director,
@@ -81,7 +80,7 @@ const EditMovieForm: React.FC<IProps> = ({ movie: initialFormState }) => {
                 genreID: +movie.genre.genreID,
                 reviewID: +movie.review.reviewID,
             });
-           
+
         }
     };
 
@@ -185,7 +184,7 @@ const EditMovieForm: React.FC<IProps> = ({ movie: initialFormState }) => {
                 </FormField>
                 <FormField>
                     <Form.Input
-                    value={movie.director}
+                        value={movie.director}
                         onChange={handleInputChange}
                         label="director"
                         placeholder="Director name"
@@ -203,11 +202,11 @@ const EditMovieForm: React.FC<IProps> = ({ movie: initialFormState }) => {
                 </FormField>
                 <FormField>
                     <Form.Input
-                    value={movie.synchronization}
+                        value={movie.synchronization}
                         onChange={handleInputChange}
                         label="Synscronization"
                         placeholder="true"
-                        name="synchonization"
+                        name="synchronization"
                     />
                     {/* {synchronizationRequreidError && (
                         <Label
@@ -221,7 +220,7 @@ const EditMovieForm: React.FC<IProps> = ({ movie: initialFormState }) => {
                 </FormField>
                 <FormField>
                     <Form.Input
-                    value={movie.ratings}
+                        value={movie.ratings}
                         onChange={handleInputChange}
                         label="Ratings"
                         placeholder="5.0"
@@ -239,11 +238,11 @@ const EditMovieForm: React.FC<IProps> = ({ movie: initialFormState }) => {
                 </FormField>
                 <FormField>
                     <Form.Input
-                    value={movie.minutes}
+                        value={movie.minutes}
                         onChange={handleInputChange}
                         label="Minutes"
                         placeholder="60min"
-                        name="ratings"
+                        name="minutes"
                     />
                     {minutesRequreidError && (
                         <Label

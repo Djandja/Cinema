@@ -42,13 +42,13 @@ const ProjectionDetailedHeader: React.FC<{ projection: IProjectionDTO }> = ({ pr
         </Segment>
       </Segment>
       <Segment>
-        <p>Datum prikazivanja: <strong>{projection.dateOfProjection}</strong></p>
+        <p>Date of projection: <strong>{projection.dateOfProjection}</strong></p>
         <p>
-          Vreme prikazivanja: <strong>{projection.timeOfProjection}</strong> 
+          Time of projection: <strong>{projection.timeOfProjection}</strong> 
         </p>
       </Segment>
       <Segment clearing attached='bottom'>
-        <Button color='red'>Make a reservation</Button>
+        {/* <Button color='red'>Make a reservation</Button> */}
         <Button onClick={cancelSelectedProjection}>
           Cancel
            </Button>

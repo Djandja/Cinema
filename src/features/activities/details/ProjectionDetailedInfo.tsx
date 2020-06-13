@@ -11,7 +11,7 @@ import { IProjectionDTO } from '../../../app/models/Projection/projectionDto'
                     <Icon size='large' color='teal' name='info' />
                   </Grid.Column>
                   <Grid.Column width={9}>
-                    <p>{'Review'}</p>
+                    <p>{''}</p>
                   </Grid.Column>
                 </Grid>
               </Segment>

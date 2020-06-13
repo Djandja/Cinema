@@ -5,6 +5,7 @@ import _ from "lodash";
 import MovieStore from '../../../app/stores/movieStore';
 import {IMovieDTO} from '../../../app/models/Movie/movieDto';
 import MovieListItem from './MovieListItem';
+import ReactPaginate from "react-paginate";
 
 const MovieList: React.FC = () => {
     const movieStore = useContext(MovieStore);
@@ -26,8 +27,36 @@ const MovieList: React.FC = () => {
     const [value, setValue] = useState("");
     const [results, setResults] = useState<IMovieDTO[]>(movies);
 
-    
+    //Pagination
+    const handlePageClick = (e: any) => {
+        const selectedPage = e.selected;
 
+        const offset = selectedPage * perPage;
+
+        setCurrentPage(selectedPage);
+        setOffset(offset);
+
+        let slice;
+        //setData();
+        // if (isSortAsc) {
+        //     slice = movies
+        //         .sort((a, b) => a.dateOfProjection.localeCompare(b.dateOfProjection))
+        //         .slice(offset, offset + perPage);
+        // } else if (isSortDesc) {
+        //     slice = movies
+        //         .sort((a, b) => a.dateOfProjection.localeCompare(b.dateOfProjection))
+        //         .reverse()
+        //         .slice(offset, offset + perPage);
+        // } else {
+            slice = movies.slice(offset, offset + perPage);
+        //}
+
+        setPageCount(Math.ceil(movies.length / perPage));
+
+        setResults(slice);
+    };
+
+    // Search
     const handleSearchChange = (e: any, { value }: any) => {
         setIsLoading(true);
         setValue(value);
@@ -66,6 +95,19 @@ const MovieList: React.FC = () => {
                     <MovieListItem key={movie.movieID} movie={movie} />
                 ))}
             </Item.Group>
+            <ReactPaginate
+                    previousLabel={"<"}
+                    nextLabel={">"}
+                    breakLabel={"..."}
+                    breakClassName={"break-me"}
+                    pageCount={pageCount}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    onPageChange={handlePageClick}
+                    containerClassName={"pagination"}
+                    //subContainerClassName={"pagination"}
+                    activeClassName={"active"}
+                />
         </Fragment>
     )
 }
