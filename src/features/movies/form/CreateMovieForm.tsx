@@ -78,7 +78,7 @@ const CreateMovieForm: React.FC = () => {
             let newMovie: IMoviePostUpdate = {
                 title: movie.title,
                 director: movie.director,
-                synchronization: (movie.synchronization == ''),
+                synchronization: movie.synchronization === 'true'? true : false,
                 ratings: movie.ratings,
                 minutes: movie.minutes,
                 genreID: +movie.genre,

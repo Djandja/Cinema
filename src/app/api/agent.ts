@@ -17,6 +17,9 @@ axios.defaults.baseURL = "http://localhost:8081/api";
 
 const responseBody = (response: AxiosResponse) => response.data;
 
+let user = "";
+let pass = "";
+
 const requests = {
   get: (url: string) => axios.get(url).then(responseBody),
   post: (url: string, body: {}) => axios.post(url, body).then(responseBody),
@@ -149,10 +152,27 @@ const Users = {
   delete: (id: number) => requests.delete(`/users/${id}`),
 };
 
+const Login = {
+  login: (email: string, password: string) => {
+    user = email;
+    pass = password;
+    return axios.get("http://localhost:8081/login", {
+      params: {},
+      withCredentials: false,
+      headers: {
+        username: email,
+        password: password
+       
+      },
+    });
+  },
+};
+
 export default {
   Projections,
   Movies,
   Reviews,
   Reservations,
-  Users
+  Users,
+  Login
 };

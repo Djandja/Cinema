@@ -17,6 +17,9 @@ body {
   ) !important;
 }
 
+
+
+
 .ui.inverted.top.fixed.menu {
   background-image: linear-gradient(
     180deg,
@@ -112,4 +115,28 @@ body {
 .pagination > li:last-child > a,
 .pagination > li:last-child > span {
   border-radius: unset;
+}
+
+
+.buttonSave {
+  background-image: linear-gradient(
+    270deg,
+    rgb(57, 192, 185) 1%,
+    rgb(47, 151, 146) 4%,
+    rgb(20, 108, 180) 8%,
+    rgb(13, 61, 151) 10%,
+    rgb(14, 54, 128) 14%,
+    rgb(15, 49, 112) 18%,
+    rgb(11, 24, 58) 22%,
+    rgb(12, 4, 34) 29%,
+    rgb(5, 1, 1) 50%,
+    rgb(31, 6, 6) 75%,
+    rgb(48, 11, 11) 79%,
+    rgb(59, 7, 7) 82%,
+    rgb(83, 6, 6) 86%,
+    rgb(95, 6, 6) 89%,
+    rgb(107, 8, 8) 93%,
+    rgb(194, 11, 11) 97%,
+    rgb(204, 11, 11) 99%
+  ) !important;
 }

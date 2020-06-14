@@ -33,30 +33,30 @@ const CreateUserForm: React.FC = () => {
     const [userPasswordRequiredError, setUserPasswordRequiredError] = useState(false);
 
     const handleSubmit = () => {
-        const userNameRequiredError = user.firstName !== "";
-        if (!userNameRequiredError) {
+        const userNameValid = user.firstName !== "";
+        if (!userNameValid) {
             setUserNameRequiredError(true);
         }
-        const userSurnameRequiredError = user.lastName !== "";
-        if (!userSurnameRequiredError) {
+        const userSurnameVailid = user.lastName !== "";
+        if (!userSurnameVailid) {
             setUserSurnameRequiredError(true);
         }
-        const userNoTelephoneRequiredError = user.noTelephone !== "";
-        if (!userNoTelephoneRequiredError) {
+        const userNoTelephoneValid = user.noTelephone !== "";
+        if (!userNoTelephoneValid) {
             setUserSurnameRequiredError(true);
         }
-        const userEmailRequiredError = user.email !== "";
-        if (!userEmailRequiredError) {
+        const userEmailValid = user.email !== "";
+        if (!userEmailValid) {
             setUserEmailRequiredError(true);
         }
-        const userPasswordRequiredError = user.password!== "";
-        if (!userPasswordRequiredError) {
+        const userPasswordValid = user.password!== "";
+        if (!userPasswordValid) {
             setUserPasswordRequiredError(true);
         }
 
-        const formValid = !uniqueError && userNameRequiredError &&
-        userSurnameRequiredError && userNoTelephoneRequiredError && 
-        userEmailRequiredError && userPasswordRequiredError;
+        const formValid = !uniqueError && userNameValid &&
+        userSurnameVailid && userNoTelephoneValid && 
+        userEmailValid && userPasswordValid;
 
         if (formValid) {
             let newUser: IUserPostUpdate = {
